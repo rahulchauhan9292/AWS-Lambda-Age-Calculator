@@ -7,7 +7,7 @@ import com.amazonaws.services.lambda.runtime.events.APIGatewayProxyResponseEvent
 import java.time.LocalDate;
 import java.time.Period;
 
-public class AwsLambdaApp implements RequestHandler<AwsLambdaRequest, APIGatewayProxyResponseEvent> {
+    public class AwsLambdaApp implements RequestHandler<AwsLambdaRequest, APIGatewayProxyResponseEvent> {
 
     @Override
     public APIGatewayProxyResponseEvent handleRequest(AwsLambdaRequest awsLambdaRequest, Context context) {
@@ -19,7 +19,7 @@ public class AwsLambdaApp implements RequestHandler<AwsLambdaRequest, APIGateway
             LocalDate l = LocalDate.of(year, month, day);
             LocalDate now = LocalDate.now();
             Period diff = Period.between(l, now);
-            String output = String.format(diff.getYears() + " years " + diff.getMonths() + " months " + diff.getDays() + " days");
+            String output = diff.getYears() + " years " + diff.getMonths() + " months " + diff.getDays() + " days";
             return response.withBody(output);
         } catch (Exception e) {
             return response.withBody("{}").withStatusCode(500);
